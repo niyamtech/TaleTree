@@ -1,8 +1,8 @@
 param (
-    [string]$atom
+    [string]$componentName = "Button"
 )
 
-$componentDir = "./src/components/$atom"
+$componentDir = "/workspaces/TaleTree/app/src/components/$componentName"
 
 # Ensure the directory exists
 New-Item -ItemType Directory -Path $componentDir -Force
@@ -16,17 +16,17 @@ interface COMPONENT_NAMEProps {
 }
 
 const COMPONENT_NAME: React.FC<COMPONENT_NAMEProps> = ({ children }) => {
-  return <div>{children}</div>;
+  return <button className="btn">{children}</button>;
 };
 
 export default COMPONENT_NAME;
 '@
 
 # Replace placeholder with actual component name
-$componentContent = $componentContent -replace "COMPONENT_NAME", $atom
+$componentContent = $componentContent -replace "COMPONENT_NAME", $componentName
 
 # Write to the file
-$componentPath = "$componentDir/$atom.tsx"
+$componentPath = "$componentDir/$componentName.tsx"
 Set-Content -Path $componentPath -Value $componentContent -Encoding UTF8
 
-Write-Output "Component '$atom' created at $componentPath"
+Write-Output "Component '$componentName' created at $componentPath"
