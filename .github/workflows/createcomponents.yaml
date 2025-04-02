@@ -14,9 +14,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set Up PowerShell
-        uses: Vampire/setup-windows@v1  # Enables Windows tools on Ubuntu
-
       - name: Run PowerShell Script
         shell: pwsh
         run: |
