@@ -1,0 +1,6 @@
+/* Default Tailwind styles for Footer component */
+.Footer {
+    @apply p-4 rounded-md shadow-lg bg-gray-100;
+}
+
+/* Additional customization can be added here */
