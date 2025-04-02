@@ -7,20 +7,23 @@ $componentDir = "./src/components/$atom"
 # Ensure the directory exists
 New-Item -ItemType Directory -Path $componentDir -Force
 
-# Define component content
-$componentContent = @"
-import React from 'react';
+# Define component content using single quotes to prevent PowerShell from expanding variables
+$componentContent = @'
+import React from "react";
 
-interface ${atom}Props {
+interface COMPONENT_NAMEProps {
   children?: React.ReactNode;
 }
 
-const $atom: React.FC<${atom}Props> = ({ children }) => {
+const COMPONENT_NAME: React.FC<COMPONENT_NAMEProps> = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default $atom;
-"@
+export default COMPONENT_NAME;
+'@
+
+# Replace placeholder with actual component name
+$componentContent = $componentContent -replace "COMPONENT_NAME", $atom
 
 # Write to the file
 $componentPath = "$componentDir/$atom.tsx"
