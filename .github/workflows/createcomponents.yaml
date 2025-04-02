@@ -1,6 +1,9 @@
 name: Create Components
 
 on:
+  push:
+    branches:
+      - main  # Runs when pushing to the 'main' branch
   workflow_dispatch:  # Allows manual trigger in GitHub Actions
 
 jobs:
