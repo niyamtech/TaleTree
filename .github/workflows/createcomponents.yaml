@@ -1,0 +1,20 @@
+name: Create Components
+
+on:
+  workflow_dispatch:  # Allows manual trigger in GitHub Actions
+
+jobs:
+  create-components:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up PowerShell
+        uses: Vampire/setup-windows@v1  # Enables Windows tools on Ubuntu
+
+      - name: Run PowerShell Script
+        shell: pwsh
+        run: |
+          pwsh ./scripts/CreateComponents.ps1
